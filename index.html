@@ -30,6 +30,24 @@
         background-color:transparent; 
         border-radius: 8px; 
         } 
+                *::-webkit-scrollbar {
+        -webkit-appearance: none;
+        }
+        *::-webkit-scrollbar:vertical {
+        width: 5px;
+        }
+        *::-webkit-scrollbar:horizontal {
+        height: 3px;
+        }
+        *::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 10px solid transparent; /* should match background, can't be transparent */
+        background-color: rgba(0, 0, 0, .5);
+        }
+        *::-webkit-scrollbar-track { 
+        background-color:transparent; 
+        border-radius: 8px; 
+        } 
         * {
             margin: 0;
             padding: 0;
@@ -160,42 +178,6 @@
     <br>
     <br>
     <br>
-    <div id="home" class="container w-100 ">
-        <div class="row ms-2 ">
-            <div class=" image pb-2" style="padding-top:1%;"><img class="shadow-lg  border border-dark"
-                    style=" margin-top: 60px;" src="crt inventor.jpg" height="400px" width="400px" alt="">
-                <div style="padding-left: 60px;">
-                    <span class=" fw-bold text-light"><br>Sun Zi (c.
-                        544 B.C.E. - c. 496 B.C.E.)
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-7 ">
-                <h2 class="text-start fw-bold main-title text-warning text-warning border text-center border-dark"
-                    style="margin-top: 10%; margin-left: 4%; ">Introduction
-                </h2>
-                <p class="p-4 text fw-bold text-light">
-
-                    The Chinese Remainder Theorem in Mathematics states that if one knows the remainders of the
-                    Euclidean division of an integer n by several integers, they can be used to determine the unique
-                    remainder of n's division by the product of these other integers, provided that the n and the
-                    divisors are pairwise coprime (no two divisors share a common factor other than 1).
-</p>
-                <h4 class=" ps-4 text fw-bold text-light">History of the Sun Zi</h4>
-                <p class="pt-4 ps-4 text fw-bold text-light">
-                    The mathematician Sun Zi created the theory in the third century AD, but it wasn't until Qin Jiushao
-                    first presented the entire theorem in 1247. An ancient Chinese author named Sun Zi penned a
-                    conventional Chinese work on military strategy. He was a pioneering realist in the field of studying
-                    international relations.
-                </p>
-
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <div  class="container w-100 mt-4">
         <div class="row">
             <br>
@@ -234,6 +216,43 @@
                     src="ians-5.jpg" height="400px" width="560px" alt="">
             </div>
 
+        </div>
+    </div>
+    <br>
+    <br>
+    
+    <br>
+    <br>
+    <div id="home" class="container w-100 ">
+        <div class="row ms-2 ">
+            <div class="col-md-5 image pb-2" style="padding-top:1%;"><img class="shadow-lg  border border-dark"
+                    style=" margin-top: 60px;" src="crt inventor.jpg" height="400px" width="400px" alt="">
+                <div style="padding-left: 60px;">
+                    <span class=" fw-bold text-light"><br>Sun Zi (c.
+                        544 B.C.E. - c. 496 B.C.E.)
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-7 ">
+                <h2 class="text-start fw-bold main-title text-warning text-warning border text-center border-dark"
+                    style="margin-top: 10%; margin-left: 4%; ">Introduction
+                </h2>
+                <p class="p-4 text fw-bold text-light">
+
+                    The Chinese Remainder Theorem in Mathematics states that if one knows the remainders of the
+                    Euclidean division of an integer n by several integers, they can be used to determine the unique
+                    remainder of n's division by the product of these other integers, provided that the n and the
+                    divisors are pairwise coprime (no two divisors share a common factor other than 1).
+</p>
+                <h4 class=" ps-4 text fw-bold text-light">History of the Sun Zi</h4>
+                <p class="pt-4 ps-4 text fw-bold text-light">
+                    The mathematician Sun Zi created the theory in the third century AD, but it wasn't until Qin Jiushao
+                    first presented the entire theorem in 1247. An ancient Chinese author named Sun Zi penned a
+                    conventional Chinese work on military strategy. He was a pioneering realist in the field of studying
+                    international relations.
+                </p>
+
+            </div>
         </div>
     </div>
     <br>
@@ -321,9 +340,8 @@ We have shown that 23 is the smallest positive integer that simultaneous solutio
                     </pre>
                 </p>
                 <div class="justify-content-center">
-                        <a class="btn  btn-lg fw-bold btn-warning text" style="margin-left: 37%;" href="./simulation.html">
-                        Try
-                        Yourself -></a>
+                    <a href="./simulation.html" class="btn  btn-lg fw-bold btn-warning text">Try
+                        Yourself</a>
                 </div>
                 <br>
                 <br>
@@ -468,7 +486,7 @@ We have shown that 23 is the smallest positive integer that simultaneous solutio
 
 
         </div>
-        <!-- <div class="d-flex justify-content-center text-decoration-none mt-3">
+        <div class="d-flex justify-content-center text-decoration-none mt-3">
             <a class="p-2" href="#">
                 <ion-icon class="text-light" name="logo-facebook"></ion-icon>
             </a>
@@ -481,7 +499,7 @@ We have shown that 23 is the smallest positive integer that simultaneous solutio
             <a class="p-2" href="#">
                 <ion-icon class="text-light" name="logo-whatsapp"></ion-icon>
             </a>
-        </div> -->
+        </div>
     </div>
     <script type="text/javascript">
         //common reveal options to create reveal animations
@@ -493,9 +511,9 @@ We have shown that 23 is the smallest positive integer that simultaneous solutio
         });
 
         //target elements, and specify options to create reveal animations
-        ScrollReveal().reveal('.main-title', { delay: 300, origin: 'left' });
-        ScrollReveal().reveal(' .text', { delay: 400, origin: 'bottom' });
-        ScrollReveal().reveal('.image', { delay: 500, origin: 'right' });
+        ScrollReveal().reveal('.main-title', { delay: 500, origin: 'left' });
+        ScrollReveal().reveal(' .text', { delay: 600, origin: 'bottom' });
+        ScrollReveal().reveal('.image', { delay: 700, origin: 'right' });
         //ScrollReveal().reveal('.media-icons i', { delay: 500, origin: 'bottom', interval: 200 });
         //ScrollReveal().reveal('.sec-02 .image, .sec-03 .image', { delay: 500, origin: 'top' });
         //ScrollReveal().reveal('.media-info li', { delay: 500, origin: 'left', interval: 200 });

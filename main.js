@@ -42,6 +42,8 @@ var remArr = [];
 // console.log("x is " + findMinX(num, rem, k));
 var count = 0;
 const doCalc = ()=>{
+    numArr=[]
+    remArr=[]
     for (let i = 0; i <=count; i++) {
         let num = document.getElementById(`num${i}`).value;
         let rem = document.getElementById(`rem${i}`).value;
