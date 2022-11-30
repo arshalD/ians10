@@ -5,175 +5,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Lab</title>
-    <link rel="stylesheet" href="css.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .footer li a {
-            text-decoration: none;
-            color: white;
-        }
-
-        nav {
-            background-color: black;
-            opacity: 0.8;
-            /* padding: 24px; */
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-
-        }
-
-        .collapse a {
-            transition: 0.3s ease;
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            padding: 20px 20px;
-            margin: 0 5px;
-            font-size: 17px;
-        }
-
-        .collapse a:hover {
-            border-top: 4px solid white;
-            border-bottom: 4px solid white;
-            padding: 15px 15px;
-        }
-
-        .combo {
-            width: 300px;
-            height: 100px;
-            margin-left: 38%;
-        }
-
-        .part1 {
-            width: 200px;
-            height: 3px;
+    <title>Simulation</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
 
 
-            background-color: black;
-            position: relative;
-            animation-name: animate;
-            animation-duration: 1s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-
-        @keyframes animate {
-            0% {
-                margin-left: 0px;
-                background-color: yellow;
-            }
-
-            25% {
-                margin-left: 50px;
-                background-color: rgb(20, 252, 82);
-            }
-
-            50% {
-                margin-left: 100px;
-                background-color: rgb(55, 0, 255);
-            }
-
-            100% {
-                margin-left: 200px;
-                background-color: rgb(255, 0, 140);
-            }
-        }
-    </style>
     <style>
         *::-webkit-scrollbar {
-        -webkit-appearance: none;
+            -webkit-appearance: none;
         }
+
         *::-webkit-scrollbar:vertical {
-        width: 5px;
+            width: 5px;
         }
+
         *::-webkit-scrollbar:horizontal {
-        height: 3px;
+            height: 3px;
         }
+
         *::-webkit-scrollbar-thumb {
-        border-radius: 8px;
-        border: 10px solid transparent; /* should match background, can't be transparent */
-        background-color: rgba(0, 0, 0, .5);
+            border-radius: 8px;
+            border: 10px solid transparent;
+            /* should match background, can't be transparent */
+            background-color: rgba(0, 0, 0, .5);
         }
-        *::-webkit-scrollbar-track { 
-        background-color:transparent; 
-        border-radius: 8px; 
-        } 
-        #simulation >div{
+
+        *::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 8px;
+        }
+
+        #simulation>div {
             display: flex !important;
             justify-content: center !important;
         }
-        #simulation >form{
+
+        #simulation>form {
             width: fit-content !important;
             /* margin-left: 40% !important; */
         }
-        #sim-container >input[type=text], select {
-          width: 10% !important;
-          padding: 12px 20px !important;
-          margin: 8px 0 !important;
-          display: inline-block !important;
-          border: 1px solid #ccc !important;
-          border-radius: 4px !important;
-          box-sizing: border-box !important;
+
+        #sim-container>input[type=text],
+        select {
+            width: 10% !important;
+            padding: 12px 20px !important;
+            margin: 8px 0 !important;
+            display: inline-block !important;
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+            box-sizing: border-box !important;
         }
-        
-        #sim-container >button {
-          width: 50px !important;
-          /* background-image: url(./plus.png) !important; */
-          padding: 14px 20px !important;
-          background-color: #212529 !important;
-          margin: 8px 0 !important;
-          border: none !important;
-          border-radius: 4px !important;
-          cursor: pointer !important;
+
+        #sim-container>button {
+            width: 50px !important;
+            /* background-image: url(./plus.png) !important; */
+            padding: 14px 20px !important;
+            background-color: #212529 !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
         }
-        #sim-container{
-            width:960px !important;
+
+        #sim-container {
+            width: 960px !important;
         }
-        #sim-container >button:hover {
-          border-color: #45a049 !important;
+
+        #sim-container>button:hover {
+            border-color: #45a049 !important;
         }
-        #simulation >div>div>form>input[type=submit] {
-          width: 40% !important;
-          background-color: #4CAF50 !important;
-          color: white !important;
-          padding: 14px 20px !important;
-          margin: 8px 0 !important;
-          border: none !important;
-          border-radius: 4px !important;
-          cursor: pointer !important;
+
+        #simulation>div>div>form>input[type=submit] {
+            width: 40% !important;
+            background-color: #4CAF50 !important;
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
         }
-        
-        #simulation >div>div>form>input[type=submit]:hover {
-          background-color: #45a049 !important;
+
+        #simulation>div>div>form>input[type=submit]:hover {
+            background-color: #45a049 !important;
         }
-        
-        #simulation >div {
-          border-radius: 5px !important;
-          /* background-color: #f2f2f2 !important; */
-          color: gold !important;
-          padding: 20px !important;
+
+        #simulation>div {
+            border-radius: 5px !important;
+            /* background-color: #f2f2f2 !important; */
+            color: gold !important;
+            padding: 20px !important;
         }
-        </style>
+    </style>
 </head>
 
 <!-- <body style="background-image:linear-gradient(135deg,#fca817 50%,#FF140F 50%);"> -->
@@ -219,10 +142,10 @@
     <br>
     <br>
     <div class="container" id="simulation">
-        <div id="simulation-row" class= "row justify-content-center bg-dark" style=" min-height: 460px;">
+        <div id="simulation-row" class="row justify-content-center bg-dark" style=" min-height: 460px;">
             <div class="col-4">
 
-                <form action="javascript:doCalc()" >
+                <form action="javascript:doCalc()">
                     <div id="sim-container" style="width:960px !important">
                         <label for="fname">X % </label>
                         <input type="text" id="num0" name="num0" placeholder="Number" required>
@@ -234,15 +157,15 @@
                     <input style="margin: 0 4em !important;" type="submit" value="Calculate">
                 </form>
                 <div id="result">
-                    
+
                 </div>
             </div>
         </div>
     </div>
     <br>
     <br>
-    <div class="container" >
-        <div class= "row ms-2 bg-dark" style=" height: 460px;">
+    <div class="container">
+        <div class="row ms-2 bg-dark" style=" height: 460px;">
             <div class="col-md-6 text ">
                 <h3 class="text-center text-warning fs-2  mt-4 p-2">FAQ</h3>
                 <div class="accordion ps-4 pe-4" style=" height: 340px;" id="accordionExample">
@@ -276,8 +199,9 @@
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <button type="button" class="btn btn-outline-info">
-                            <a class=" text-primary p-2" href="https://brilliant.org/wiki/chinese-remainder-theorem/">Read
-                                    More</a></button>
+                                    <a class=" text-primary p-2"
+                                        href="https://brilliant.org/wiki/chinese-remainder-theorem/">Read
+                                        More</a></button>
                             </div>
                         </div>
                     </div>
@@ -307,10 +231,11 @@
             <div class="col-md-6 text ">
                 <form>
                     <h2 class=" mt-4 p-2 fs-2 text-warning">Comments</h2><br>
-                    <input style="width: 490px; height:150px" class="form-control p-2" type="text" id="fname" name="comments" placeholder="Enter your comments here :"><br>
-                  
+                    <input style="width: 490px; height:150px" class="form-control p-2" type="text" id="fname"
+                        name="comments" placeholder="Enter your comments here :"><br>
+
                     <button type="button" class="btn btn-outline-success rounded-pill">Leave a comment</button>
-                  </form>
+                </form>
             </div>
 
 
@@ -378,15 +303,14 @@
 
 
     </script>
+    <script src="./js/main.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="main.js"></script>
 </body>
 
 </html>
