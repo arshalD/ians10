@@ -1,10 +1,10 @@
 (function (window) {
     // Variables
     var dc = {};
-    let count = 0;
+    let count = 1;
     
     let getHtmlFormInputSnippet = (count) => `
-        <div id="inputItem${count}" class="col-12 row">
+        <div id="inputItem${count}" class="col-12 row mt-1">
             <div class="col-1 py-2">
                 <div class="text-warning text-center">X</div>
             </div>
@@ -13,16 +13,16 @@
             </div>
             <div class="col-3">
                 <label for="mod" class="visually-hidden">Modulie</label>
-                <input type="number" class="form-control h-75" id="mod${count}" placeholder="Modulie">
+                <input type="number" class="form-control" id="mod${count}" placeholder="Modulie">
             </div>
             <div class="col-1 py-2">
                 <div class="text-warning text-center">=</div>
             </div>
             <div class="col-3">
                 <label for="rem" class="visually-hidden">Remainder</label>
-                <input type="number" class="form-control h-75" id="rem${count}" placeholder="Remainder">
+                <input type="number" class="form-control" id="rem${count}" placeholder="Remainder">
             </div>
-            <div class="col-3 pb-2">
+            <div class="col-3">
                 <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg">
                 </button>
             </div>
@@ -90,6 +90,9 @@
     $(document).ready(function() {
         dc.doCalc = () => {
             crtError(``);
+            $("#crt_error").removeClass('mt-5');
+            crtResult(``);
+            $("#crt_result").removeClass('mt-5');
             modArr = [];
             remArr = [];
             let x;

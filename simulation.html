@@ -157,16 +157,35 @@
                             </div>
                             <div class="col-3">
                               <label for="mod" class="visually-hidden">Modulie</label>
-                              <input type="number" class="form-control h-75" id="mod0" placeholder="Modulie">
+                              <input type="number" class="form-control" id="mod0" placeholder="Modulie">
                             </div>
                             <div class="col-1 py-2">
                                 <div class="text-warning text-center">=</div>
                             </div>
                             <div class="col-3">
                                 <label for="rem" class="visually-hidden">Remainder</label>
-                                <input type="number" class="form-control h-75" id="rem0" placeholder="Remainder">
+                                <input type="number" class="form-control" id="rem0" placeholder="Remainder" height="">
                             </div>
-                            <div class="col-3 pb-2">
+                        </div>
+                        <div id="inputItem1" class="col-12 row mt-2">
+                            <div class="col-1 py-2">
+                              <div class="text-warning text-center">X</div>
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">%</div>
+                            </div>
+                            <div class="col-3">
+                              <label for="mod" class="visually-hidden">Modulie</label>
+                              <input type="number" class="form-control" id="mod1" placeholder="Modulie">
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">=</div>
+                            </div>
+                            <div class="col-3">
+                                <label for="rem" class="visually-hidden">Remainder</label>
+                                <input type="number" class="form-control" id="rem1" placeholder="Remainder">
+                            </div>
+                            <div class="col-3">
                                 <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg"></button>
                             </div>
                         </div>
@@ -195,6 +214,53 @@
     </div>
     <br>
     <br>
+
+    <!-- <div class="container" id="simulation">
+        <div id="crt_sol" class="row bg-dark h-50 p-4">
+            <div class="col-12">
+                <h3 class="text-warning">Solution</h3>
+            </div>
+            <div class="col-12 p-4 text-light text-center">
+                formula
+                <math>
+                    X = (r<sub>1</sub>M<sub>1</sub>M<sub>1</sub><sup>-1</sup> + 
+                    r<sub>2</sub>M<sub>2</sub>M<sub>2</sub><sup>-1</sup> + ...... +
+                    r<sub>n</sub>M<sub>n</sub>M<sub>n</sub><sup>-1</sup>) mod M
+                </math>
+            </div>
+            <div class="col-12">
+                given
+                <table class="table table-light table-bordered border-primary">
+                    <thead>
+                        <tr>
+                          <th scope="col" width="60">i</th>
+                          <th scope="col">0</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-group-divider">
+                        <tr>
+                          <th scope="row"><math>r<sub>i</sub></math></th>
+                          <td>Mark</td>
+                        </tr>
+                      </tbody>
+                </table>
+            </div>
+            <div class="col-12">
+                Finding M
+            </div>
+            <div class="col-12">
+                Finding Mi
+            </div>
+            <div class="col-12">
+                Finding Mi inverse
+            </div>
+            <div class="col-12">
+                Finding X
+            </div>
+        </div>
+    </div>
+    <br>
+    <br> -->
 
     <div class="container">
         <div class="row bg-dark h-100 py-4" >
@@ -265,7 +331,7 @@
                     <h2 class="text-center text-warning mt-4 p-2">Comments</h2>
                     <textarea class="form-control mb-4" 
                     placeholder="Enter your comments here :"
-                    row=""></textarea>
+                    rows="6"></textarea>
                     <button type="button" class=" btn btn-outline-success rounded-pill">Leave a comment</button>
                 </form>
             </div>
