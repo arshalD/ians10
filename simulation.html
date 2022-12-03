@@ -5,175 +5,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Lab</title>
-    <link rel="stylesheet" href="css.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Simulation</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
+    <script src="./js/jquery-3.6.1.min.js"></script>
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .footer li a {
-            text-decoration: none;
-            color: white;
-        }
-
-        nav {
-            background-color: black;
-            opacity: 0.8;
-            /* padding: 24px; */
-            text-align: center;
-            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-
-        }
-
-        .collapse a {
-            transition: 0.3s ease;
-            color: white;
-            font-size: 20px;
-            text-decoration: none;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            padding: 20px 20px;
-            margin: 0 5px;
-            font-size: 17px;
-        }
-
-        .collapse a:hover {
-            border-top: 4px solid white;
-            border-bottom: 4px solid white;
-            padding: 15px 15px;
-        }
-
-        .combo {
-            width: 300px;
-            height: 100px;
-            margin-left: 38%;
-        }
-
-        .part1 {
-            width: 200px;
-            height: 3px;
-
-
-            background-color: black;
-            position: relative;
-            animation-name: animate;
-            animation-duration: 1s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
-
-
-        @keyframes animate {
-            0% {
-                margin-left: 0px;
-                background-color: yellow;
-            }
-
-            25% {
-                margin-left: 50px;
-                background-color: rgb(20, 252, 82);
-            }
-
-            50% {
-                margin-left: 100px;
-                background-color: rgb(55, 0, 255);
-            }
-
-            100% {
-                margin-left: 200px;
-                background-color: rgb(255, 0, 140);
-            }
-        }
-    </style>
     <style>
         *::-webkit-scrollbar {
-        -webkit-appearance: none;
+            -webkit-appearance: none;
         }
+
         *::-webkit-scrollbar:vertical {
-        width: 5px;
+            width: 5px;
         }
+
         *::-webkit-scrollbar:horizontal {
-        height: 3px;
+            height: 3px;
         }
+
         *::-webkit-scrollbar-thumb {
-        border-radius: 8px;
-        border: 10px solid transparent; /* should match background, can't be transparent */
-        background-color: rgba(0, 0, 0, .5);
+            border-radius: 8px;
+            border: 10px solid transparent;
+            /* should match background, can't be transparent */
+            background-color: rgba(0, 0, 0, .5);
         }
-        *::-webkit-scrollbar-track { 
-        background-color:transparent; 
-        border-radius: 8px; 
-        } 
-        #simulation >div{
+
+        *::-webkit-scrollbar-track {
+            background-color: transparent;
+            border-radius: 8px;
+        }
+
+        /* #simulation>div {
             display: flex !important;
             justify-content: center !important;
         }
-        #simulation >form{
+
+        #simulation>form {
             width: fit-content !important;
-            /* margin-left: 40% !important; */
+            margin-left: 40% !important; 
         }
-        #sim-container >input[type=text], select {
-          width: 10% !important;
-          padding: 12px 20px !important;
-          margin: 8px 0 !important;
-          display: inline-block !important;
-          border: 1px solid #ccc !important;
-          border-radius: 4px !important;
-          box-sizing: border-box !important;
+
+        #sim-container>input[type=number],
+        select {
+            width: 10% !important;
+            padding: 12px 20px !important;
+            margin: 8px 0 !important;
+            display: inline-block !important;
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+            box-sizing: border-box !important;
         }
-        
-        #sim-container >button {
-          width: 50px !important;
-          /* background-image: url(./plus.png) !important; */
-          padding: 14px 20px !important;
-          background-color: #212529 !important;
-          margin: 8px 0 !important;
-          border: none !important;
-          border-radius: 4px !important;
-          cursor: pointer !important;
+
+        #sim-container>button {
+            width: 50px !important;
+            // background-image: url(./plus.png) !important; 
+            padding: 14px 20px !important;
+            background-color: #212529 !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
         }
-        #sim-container{
-            width:960px !important;
+
+        #sim-container {
+            width: 960px !important;
         }
-        #sim-container >button:hover {
-          border-color: #45a049 !important;
+
+        #sim-container>button:hover {
+            border-color: #45a049 !important;
         }
-        #simulation >div>div>form>input[type=submit] {
-          width: 40% !important;
-          background-color: #4CAF50 !important;
-          color: white !important;
-          padding: 14px 20px !important;
-          margin: 8px 0 !important;
-          border: none !important;
-          border-radius: 4px !important;
-          cursor: pointer !important;
+
+        #simulation>div>div>form>input[type=submit] {
+            width: 40% !important;
+            background-color: #4CAF50 !important;
+            color: white !important;
+            padding: 14px 20px !important;
+            margin: 8px 0 !important;
+            border: none !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
         }
-        
-        #simulation >div>div>form>input[type=submit]:hover {
-          background-color: #45a049 !important;
+
+        #simulation>div>div>form>input[type=submit]:hover {
+            background-color: #45a049 !important;
         }
-        
-        #simulation >div {
-          border-radius: 5px !important;
-          /* background-color: #f2f2f2 !important; */
-          color: gold !important;
-          padding: 20px !important;
-        }
-        </style>
+
+        #simulation>div {
+            border-radius: 5px !important;
+            // background-color: #f2f2f2 !important;
+            color: gold !important;
+            padding: 20px !important;
+        } */
+    </style>
 </head>
 
 <!-- <body style="background-image:linear-gradient(135deg,#fca817 50%,#FF140F 50%);"> -->
@@ -205,11 +129,12 @@
                             <a class="nav-link text-light" href="#">Simulation</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-light" href="./assignment.html">Assignment</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="./index.html#about">About us</a>
                         </li>
-
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -218,122 +143,228 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
     <div class="container" id="simulation">
-        <div id="simulation-row" class= "row justify-content-center bg-dark" style=" min-height: 460px;">
-            <div class="col-4">
-
-                <form action="javascript:doCalc()" >
-                    <div id="sim-container" style="width:960px !important">
-                        <label for="fname">X % </label>
-                        <input type="text" id="num0" name="num0" placeholder="Number" required>
-                        <label for="lname">=</label>
-                        <input type="text" id="rem0" name="rem0" placeholder="Remainder">
-                        <button onclick="addItem()" class="add"><img width="35" src="./plus.png"></button>
+        <div id="simulation-row" class="row bg-dark h-50"">
+            <div class="col-12 my-3">
+                <h2 class="text-warning text-center">Chinese Remainder Theorem Simulation</h2>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8 py-5">
+                <form action="javascript:$dc.doCalc()">
+                    <div id="sim-container" class="row g-3">
+                        <div id="inputItem0" class="col-12 row">
+                            <div class="col-1 py-2">
+                              <div class="text-warning text-center">X</div>
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">%</div>
+                            </div>
+                            <div class="col-4">
+                              <label for="mod" class="visually-hidden">Divisor</label>
+                              <input type="number" class="form-control" id="mod0" placeholder="Divisor">
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">=</div>
+                            </div>
+                            <div class="col-4">
+                                <label for="rem" class="visually-hidden">Remainder</label>
+                                <input type="number" class="form-control" id="rem0" placeholder="Remainder" height="">
+                            </div>
+                        </div>
+                        <div id="inputItem1" class="col-12 row mt-3">
+                            <div class="col-1 py-2">
+                              <div class="text-warning text-center">X</div>
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">%</div>
+                            </div>
+                            <div class="col-4">
+                              <label for="mod" class="visually-hidden">Divisor</label>
+                              <input type="number" class="form-control" id="mod1" placeholder="Divisor">
+                            </div>
+                            <div class="col-1 py-2">
+                                <div class="text-warning text-center">=</div>
+                            </div>
+                            <div class="col-4">
+                                <label for="rem" class="visually-hidden">Remainder</label>
+                                <input type="number" class="form-control" id="rem1" placeholder="Remainder">
+                            </div>
+                            <div class="col-1">
+                                <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg"></button>
+                            </div>
+                        </div>
                     </div>
-                    <br>
-                    <input style="margin: 0 4em !important;" type="submit" value="Calculate">
+                    <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                        <button type="submit" class="btn btn-success">Calculate</button>
+                    </div>
                 </form>
-                <div id="result">
-                    
+                <div id="crt_error"></div>
+                <div id="crt_result"></div>
+                <div id="get_sol" class="mt-5">
+                    <button onclick="$dc.getSolution()" class="btn btn-outline-info">Get solution</button>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="container" id="crt_sol">
+        <div id="crt_sol" class="row bg-dark h-50 p-4">
+            <div class="col-12">
+                <h3 class="text-warning">Solution of your input values:</h3>
+            </div>
+            <div class="col-12 p-4 text-light text-center">
+                <!-- formula -->
+                <h6 class="text-warning">Formula of CRT</h6>
+                <math>
+                    X = (r<sub>1</sub>M<sub>1</sub>M<sub>1</sub><sup>-1</sup> + 
+                    r<sub>2</sub>M<sub>2</sub>M<sub>2</sub><sup>-1</sup> + ...... +
+                    r<sub>n</sub>M<sub>n</sub>M<sub>n</sub><sup>-1</sup>) mod M
+                </math>
+            </div>
+            <div id="given" class="col-12 mt-4">
+                <!-- given -->
+                <h5 class="text-warning">Given:</h5>
+                <div class="table-responsive">
+                    <table id="table0" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>r<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table id="table1" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>m<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <!-- Finding M -->
+                <h5 class="text-warning">Finding value of M</h5>
+                <div class="text-center text-light">
+                    <math>M = m<sub>0</sub> * m<sub>1</sub> * ....... * m<sub>n</sub></math>
+                </div>
+                <div id="M_value" class="text-warning text-center"></div>
+            </div>
+            <div class="col-12 mt-5">
+                <!-- Finding Mi -->
+                <h5 class="text-warning">
+                    Finding value of 
+                    <math>M<sub>i</sub></math>
+                </h5>
+                <div class="col-12 p-4 text-light text-center">
+                    <!-- formula -->
+                    <h6 class="text-warning">Solved as follow</h6>
+                    <math>
+                        M<sub>i</sub> = M / m<sub>i</sub>
+                    </math>
+                </div>
+                <div class="table-responsive">
+                    <table id="table2" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>M<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <!-- Finding Mi inverse-->
+                <h5 class="text-warning">Finding value of 
+                    <math class="text-warning">M<sub>i</sub><sup>-1</sup></math>
+                </h5>
+                <div class="col-12 p-4 text-light text-center">
+                    <!-- formula -->
+                    <h6 class="text-warning">Solved by using extended euclidean algorithm</h6>
+                    <math>
+                        M<sub>i</sub> M<sub>i</sub><sup>-1</sup> &#8801; 1 (mod mi)
+                    </math>
+                </div>
+                <div class="table-responsive">
+                    <table id="table3" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>M<sub>i</sub><sup>-1</sup></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-12 mt-5">
+                <!-- Finding X -->
+                <div id="X_value" class="text-center">
+                    <h5 class="text-warning">
+                        
+                    </h5>
                 </div>
             </div>
         </div>
     </div>
     <br>
     <br>
-    <div class="container" >
-        <div class= "row ms-2 bg-dark" style=" height: 460px;">
-            <div class="col-md-6 text ">
-                <h3 class="text-center text-warning fs-2  mt-4 p-2">FAQ</h3>
-                <div class="accordion ps-4 pe-4" style=" height: 340px;" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                When can Chinese remainder theorem be applied?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                The Chinese remainder theorem is widely used for computing with large integers, as it
-                                allows replacing a computation for which one knows a bound on the size of the result by
-                                several similar computations on small integers.
 
-                                <a class="text-primary p-2"
-                                    href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Is CRT gives a unique solution ?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <button type="button" class="btn btn-outline-info">
-                            <a class=" text-primary p-2" href="https://brilliant.org/wiki/chinese-remainder-theorem/">Read
-                                    More</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Why is the Chinese remainder theorem used in cryptography?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Chiness reminder theorem provide benefits in computing, mathematics and also in the
-                                field of cryptography, where the algorithm provides relief in case of modular
-                                computation and also in case of making the random numbers. In CRT, it is a complex study
-                                of this theorem to develop a new terms of producing random numbers.
-                                <a class="text-primary p-2"
-                                    href="https://www.tutorialspoint.com/what-is-the-use-of-chinese-remainder-theorem-to-generate-random-numbers-for-information-security">Read
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6 text ">
-                <form>
-                    <h2 class=" mt-4 p-2 fs-2 text-warning">Comments</h2><br>
-                    <input style="width: 490px; height:150px" class="form-control p-2" type="text" id="fname" name="comments" placeholder="Enter your comments here :"><br>
-                  
-                    <button type="button" class="btn btn-outline-success rounded-pill">Leave a comment</button>
-                  </form>
-            </div>
-
-
+    
+    
+    <div id="about" class="container-fluid bg-dark pt-2">
+        <div class="text-center">
+            <h3 style="font-family: Georgia, serif;" class="text-light fw-bold pt-4">INFORMATION ASSURANCE
+                AND NETWORK SECURITY</h3>
+            <h3 class="text-light fw-bold pt-2 pb-2">VIRTUAL LAB</h3>
+            <div class="part1"> </div>
+            <h5  style="font-family: Georgia, serif;" class="text-light mt-4 ps-4 ms-4">St.Vincent Pallotti College Of Engineering And Technology
+            </h5>
+            <h5 style="font-family: serif;" class="text-light">7th Semester </h5>
+            <h5 style="font-family: serif;" class="text-light pb-2">Computer Engineering </h5>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div id="about" class="  container-fluid bg-dark">
-        <div class="combo">
-            <h3 class="text-light fw-bold text-center pt-4 pb-2">VIRTUAL LAB</h3>
-            <div class="part1"></div>
-        </div>
-
-        <div class="footer row p-2">
+        <div class="footer row p-2 pt-4">
             <div class="col-6 text-end p-4 ">
                 <p class="text-light">Project Guide : </p>
 
                 <li class="text-light"><a href="#">Prof. R. C. Roychaudhary </a></li>
                 <li class="text-light"><a href="#">Mr. Dhiraj Gupta </a></li>
             </div>
+
             <div class="col-6  p-4 border-start">
-                <p class="text-light">Team Member :</p>
+                <p class="text-light">Team Member : </p>
 
                 <li class="text-light"><a href="#">Ayushi Ghatole - 03</a></li>
                 <li class="text-light"><a href="#">Arshal Mathew - 37</a></li>
@@ -342,20 +373,20 @@
 
 
         </div>
-        <!-- <div class="d-flex justify-content-center text-decoration-none mt-3">
+        <div class="icons d-flex justify-content-center text-decoration-none mt-3">
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-facebook"></ion-icon>
+                <ion-icon class="text-light hover-focus" name="logo-facebook"></ion-icon>
             </a>
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-instagram"></ion-icon>
+                <ion-icon class="text-light plain-hover-focus" name="logo-instagram"></ion-icon>
             </a>
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-twitter"></ion-icon>
+                <ion-icon class="text-light hover-float" name="logo-twitter"></ion-icon>
             </a>
             <a class="p-2" href="#">
                 <ion-icon class="text-light" name="logo-whatsapp"></ion-icon>
             </a>
-        </div> -->
+        </div>
     </div>
     <script type="text/javascript">
         //common reveal options to create reveal animations
@@ -378,15 +409,14 @@
 
 
     </script>
+    <script src="./js/main.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="main.js"></script>
 </body>
 
 </html>
