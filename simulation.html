@@ -129,11 +129,12 @@
                             <a class="nav-link text-light" href="#">Simulation</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-light" href="./assignment.html">Assignment</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-light" href="./index.html#about">About us</a>
                         </li>
-
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -142,10 +143,15 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
     <div class="container" id="simulation">
         <div id="simulation-row" class="row bg-dark h-50"">
-            <div class="col-3"></div>
-            <div class="col-6 py-5">
+            <div class="col-12 my-3">
+                <h2 class="text-warning text-center">Chinese Remainder Theorem Simulation</h2>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8 py-5">
                 <form action="javascript:$dc.doCalc()">
                     <div id="sim-container" class="row g-3">
                         <div id="inputItem0" class="col-12 row">
@@ -155,37 +161,37 @@
                             <div class="col-1 py-2">
                                 <div class="text-warning text-center">%</div>
                             </div>
-                            <div class="col-3">
-                              <label for="mod" class="visually-hidden">Modulie</label>
-                              <input type="number" class="form-control" id="mod0" placeholder="Modulie">
+                            <div class="col-4">
+                              <label for="mod" class="visually-hidden">Divisor</label>
+                              <input type="number" class="form-control" id="mod0" placeholder="Divisor">
                             </div>
                             <div class="col-1 py-2">
                                 <div class="text-warning text-center">=</div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label for="rem" class="visually-hidden">Remainder</label>
                                 <input type="number" class="form-control" id="rem0" placeholder="Remainder" height="">
                             </div>
                         </div>
-                        <div id="inputItem1" class="col-12 row mt-2">
+                        <div id="inputItem1" class="col-12 row mt-3">
                             <div class="col-1 py-2">
                               <div class="text-warning text-center">X</div>
                             </div>
                             <div class="col-1 py-2">
                                 <div class="text-warning text-center">%</div>
                             </div>
-                            <div class="col-3">
-                              <label for="mod" class="visually-hidden">Modulie</label>
-                              <input type="number" class="form-control" id="mod1" placeholder="Modulie">
+                            <div class="col-4">
+                              <label for="mod" class="visually-hidden">Divisor</label>
+                              <input type="number" class="form-control" id="mod1" placeholder="Divisor">
                             </div>
                             <div class="col-1 py-2">
                                 <div class="text-warning text-center">=</div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <label for="rem" class="visually-hidden">Remainder</label>
                                 <input type="number" class="form-control" id="rem1" placeholder="Remainder">
                             </div>
-                            <div class="col-3">
+                            <div class="col-1">
                                 <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg"></button>
                             </div>
                         </div>
@@ -194,25 +200,13 @@
                         <button type="submit" class="btn btn-success">Calculate</button>
                     </div>
                 </form>
-                
-                <!-- <form action="javascript:doCalc()">
-                    <div id="sim-container">
-                        <label for="fname">X % </label>
-                        <input type="number" id="num0" name="num0" placeholder="Number" required>
-                        <label for="lname">=</label>
-                        <input type="number" id="rem0" name="rem0" placeholder="Remainder">
-                        <button onclick="addItem()" class="add"><img width="35" src="./plus.png"></button>
-                    </div>
-                    <br>
-                    <input style="margin: 0 4em !important;" type="submit" value="Calculate">
-                </form> -->
                 <div id="crt_error"></div>
                 <div id="crt_result"></div>
                 <div id="get_sol" class="mt-5">
                     <button onclick="$dc.getSolution()" class="btn btn-outline-info">Get solution</button>
                 </div>
             </div>
-            <div class="col-3"></div>
+            <div class="col-2"></div>
         </div>
     </div>
     <br>
@@ -348,120 +342,51 @@
     <br>
     <br>
 
-    <div class="container">
-        <div class="row bg-dark h-100 py-4" >
-            <div class="col-md-6 text">
-                <h3 class="text-center text-warning  mt-4 p-2">FAQ</h3>
-                <div class="accordion ps-4 pe-4" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                When can Chinese remainder theorem be applied?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                The Chinese remainder theorem is widely used for computing with large integers, as it
-                                allows replacing a computation for which one knows a bound on the size of the result by
-                                several similar computations on small integers.
-
-                                <a class="text-primary p-2"
-                                    href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Is CRT gives a unique solution ?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <button type="button" class="btn btn-outline-info">
-                                    <a class=" text-primary p-2"
-                                        href="https://brilliant.org/wiki/chinese-remainder-theorem/">Read
-                                        More</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Why is the Chinese remainder theorem used in cryptography?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Chiness reminder theorem provide benefits in computing, mathematics and also in the
-                                field of cryptography, where the algorithm provides relief in case of modular
-                                computation and also in case of making the random numbers. In CRT, it is a complex study
-                                of this theorem to develop a new terms of producing random numbers.
-                                <a class="text-primary p-2"
-                                    href="https://www.tutorialspoint.com/what-is-the-use-of-chinese-remainder-theorem-to-generate-random-numbers-for-information-security">Read
-                                    More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-6 text px-4">
-                <form class="">
-                    <h2 class="text-center text-warning mt-4 p-2">Comments</h2>
-                    <textarea class="form-control mb-4" 
-                    placeholder="Enter your comments here :"
-                    rows="6"></textarea>
-                    <button type="button" class=" btn btn-outline-success rounded-pill">Leave a comment</button>
-                </form>
-            </div>
+    
+    
+    <div id="about" class="container-fluid bg-dark pt-2">
+        <div class="text-center">
+            <h3 style="font-family: Georgia, serif;" class="text-light fw-bold pt-4">INFORMATION ASSURANCE
+                AND NETWORK SECURITY</h3>
+            <h3 class="text-light fw-bold pt-2 pb-2">VIRTUAL LAB</h3>
+            <div class="part1"> </div>
+            <h5  style="font-family: Georgia, serif;" class="text-light mt-4 ps-4 ms-4">St.Vincent Pallotti College Of Engineering And Technology
+            </h5>
+            <h5 style="font-family: serif;" class="text-light">7th Semester </h5>
+            <h5 style="font-family: serif;" class="text-light pb-2">Computer Engineering </h5>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div id="about" class="container-fluid bg-dark">
-        <div class="combo">
-            <h3 class="text-light fw-bold text-center pt-4 pb-2">VIRTUAL LAB</h3>
-            <div class="part1"></div>
-        </div>
-
-        <div class="footer row p-2">
+        <div class="footer row p-2 pt-4">
             <div class="col-6 text-end p-4 ">
                 <p class="text-light">Project Guide : </p>
 
                 <li class="text-light"><a href="#">Prof. R. C. Roychaudhary </a></li>
                 <li class="text-light"><a href="#">Mr. Dhiraj Gupta </a></li>
             </div>
+
             <div class="col-6  p-4 border-start">
-                <p class="text-light">Team Member :</p>
+                <p class="text-light">Team Member : </p>
 
                 <li class="text-light"><a href="#">Ayushi Ghatole - 03</a></li>
                 <li class="text-light"><a href="#">Arshal Mathew - 37</a></li>
                 <li class="text-light"><a href="#">Eshant Sonune - 45</a></li>
             </div>
-        </div>
 
-        <!-- <div class="d-flex justify-content-center text-decoration-none mt-3">
+
+        </div>
+        <div class="icons d-flex justify-content-center text-decoration-none mt-3">
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-facebook"></ion-icon>
+                <ion-icon class="text-light hover-focus" name="logo-facebook"></ion-icon>
             </a>
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-instagram"></ion-icon>
+                <ion-icon class="text-light plain-hover-focus" name="logo-instagram"></ion-icon>
             </a>
             <a class="p-2" href="#">
-                <ion-icon class="text-light" name="logo-twitter"></ion-icon>
+                <ion-icon class="text-light hover-float" name="logo-twitter"></ion-icon>
             </a>
             <a class="p-2" href="#">
                 <ion-icon class="text-light" name="logo-whatsapp"></ion-icon>
             </a>
-        </div> -->
+        </div>
     </div>
     <script type="text/javascript">
         //common reveal options to create reveal animations

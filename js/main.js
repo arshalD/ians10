@@ -7,25 +7,25 @@ $("#crt_sol").hide();
     let count = 1;
     
     let getHtmlFormInputSnippet = (count) => `
-        <div id="inputItem${count}" class="col-12 row mt-1">
+        <div id="inputItem${count}" class="col-12 row mt-3">
             <div class="col-1 py-2">
                 <div class="text-warning text-center">X</div>
             </div>
             <div class="col-1 py-2">
                 <div class="text-warning text-center">%</div>
             </div>
-            <div class="col-3">
-                <label for="mod" class="visually-hidden">Modulie</label>
-                <input type="number" class="form-control" id="mod${count}" placeholder="Modulie">
+            <div class="col-4">
+                <label for="mod" class="visually-hidden">Divisor</label>
+                <input type="number" class="form-control" id="mod${count}" placeholder="Divisor">
             </div>
             <div class="col-1 py-2">
                 <div class="text-warning text-center">=</div>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <label for="rem" class="visually-hidden">Remainder</label>
                 <input type="number" class="form-control" id="rem${count}" placeholder="Remainder">
             </div>
-            <div class="col-3">
+            <div class="col-1">
                 <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg">
                 </button>
             </div>
