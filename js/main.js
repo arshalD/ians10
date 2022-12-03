@@ -26,7 +26,7 @@ $("#crt_sol").hide();
                 <input type="number" class="form-control" id="rem${count}" placeholder="Remainder">
             </div>
             <div class="col-1">
-                <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="./plus-circle.svg">
+                <button onclick="$dc.addItem()" class="btn pt-0 float-end"><img width="35" src="../images/plus-circle.svg">
                 </button>
             </div>
         </div>
@@ -162,7 +162,7 @@ $("#crt_sol").hide();
         dc.addItem = () => {
             window.event.preventDefault();
             $(`#inputItem${count} :nth-child(6)`).html(
-                `<button onclick="$dc.deleteItem(${count})" class="btn pt-0 float-end"><img width="35" src="./minus-circle.svg">
+                `<button onclick="$dc.deleteItem(${count})" class="btn pt-0 float-end"><img width="35" src="../images/minus-circle.svg">
                 </button>`
             );
             count++;
