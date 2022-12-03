@@ -1,3 +1,6 @@
+$("#get_sol").hide();
+$("#crt_sol").hide();
+
 (function (window) {
     // Variables
     var dc = {};
@@ -37,7 +40,7 @@
             if (m == 0) {
                 if (a != 1) {
                     crtError(`Relative prime error.`);
-                    break;
+                    return -1;
                 }
                 return (x < 0) ? (div_t + x) : x;
             }
@@ -52,20 +55,29 @@
     
     // Chinese remainder theorem program.
     function getCRT(mod, rem, size) {
-        var M = 1, result = 0, t;
+        var M = 1, result = 0, t, temp, t_inv;
     
         for (var i = 0; i < size; i++) {
             M *= mod[i];
         }
-        var temp;
+        // Shows the value of M.
+        $("#M_value").text(`M = ${M}`);
+        
         for (var i = 0; i < size; i++) {
             t = M / mod[i];
-            temp = (rem[i] * t * inv(t, mod[i]));
+            appendTableRow(2, i, t);
+            t_inv = inv(t, mod[i]);
+            if (t_inv == -1) {
+                return -1;
+            }
+            appendTableRow(3, i, t_inv);
+            temp = (rem[i] * t * t_inv);
             result += temp;
             console.log(temp);
         }
     
         result %= M;
+        
         return (result < 0) ? (M + result) : result;
     }
 
@@ -87,12 +99,38 @@
         );
     };
 
+    let appendTableRow = (tableid, coli, value) => {
+        $(`#table${tableid} > thead > tr`).append(`
+            <th scope="col" style="min-width: 70px;">${coli}</th>
+        `);
+        $(`#table${tableid} > tbody > tr`).append(`
+            <td style="min-width: 70px;">${value}</td>
+        `);
+    };
+
+    let resetTableRow = (tableid, htmlText) => {
+        $(`#table${tableid} > thead > tr`).html(`
+            <th scope="row" style="min-width: 70px;">For i</th>
+        `);
+        $(`#table${tableid} > tbody > tr`).html(`
+            <th scope="row" style="min-width: 70px;">
+                ${htmlText}
+            </th>
+        `);
+    };
+
     $(document).ready(function() {
         dc.doCalc = () => {
             crtError(``);
             $("#crt_error").removeClass('mt-5');
             crtResult(``);
             $("#crt_result").removeClass('mt-5');
+            $("#get_sol").hide();
+            $("#crt_sol").hide();
+            resetTableRow(0, "<math>r<sub>i</sub></math>");
+            resetTableRow(1,"<math>m<sub>i</sub></math>");
+            resetTableRow(2, "<math>M<sub>i</sub></math>");
+            resetTableRow(3, "<math>M<sub>i</sub><sup>-1</sup></math>");
             modArr = [];
             remArr = [];
             let x;
@@ -101,15 +139,24 @@
                 let rem = document.getElementById(`rem${i}`).value;
                 if (mod=='' || rem=='') {
                     crtError(`Input values`);
+                    $("#get_sol").hide();
                     return;
                 }
                 modArr.push(parseInt(mod));
                 remArr.push(parseInt(rem));
+                appendTableRow(0, i, rem);
+                appendTableRow(1, i, mod);
             }
             console.log(modArr, remArr, count);
             x = getCRT(modArr, remArr, modArr.length);
+            if (x == -1) {
+                $("#get_sol").hide();
+                return ;
+            }
+            $(`#X_value > h5`).html(`<math>&#8756;</math> X = ${x}`);
             console.log(x);
             crtResult(`The value of X is ${x}`);
+            $("#get_sol").show();
         };
         
         dc.addItem = () => {
@@ -136,8 +183,12 @@
                 }    
             }
         };
+
+        dc.getSolution = () => {
+            $("#crt_sol").show();
+
+        };
     });
-    
 
     window.$dc = dc;
 })(window);

@@ -208,6 +208,9 @@
                 </form> -->
                 <div id="crt_error"></div>
                 <div id="crt_result"></div>
+                <div id="get_sol" class="mt-5">
+                    <button onclick="$dc.getSolution()" class="btn btn-outline-info">Get solution</button>
+                </div>
             </div>
             <div class="col-3"></div>
         </div>
@@ -215,52 +218,135 @@
     <br>
     <br>
 
-    <!-- <div class="container" id="simulation">
+    <div class="container" id="crt_sol">
         <div id="crt_sol" class="row bg-dark h-50 p-4">
             <div class="col-12">
-                <h3 class="text-warning">Solution</h3>
+                <h3 class="text-warning">Solution of your input values:</h3>
             </div>
             <div class="col-12 p-4 text-light text-center">
-                formula
+                <!-- formula -->
+                <h6 class="text-warning">Formula of CRT</h6>
                 <math>
                     X = (r<sub>1</sub>M<sub>1</sub>M<sub>1</sub><sup>-1</sup> + 
                     r<sub>2</sub>M<sub>2</sub>M<sub>2</sub><sup>-1</sup> + ...... +
                     r<sub>n</sub>M<sub>n</sub>M<sub>n</sub><sup>-1</sup>) mod M
                 </math>
             </div>
-            <div class="col-12">
-                given
-                <table class="table table-light table-bordered border-primary">
-                    <thead>
-                        <tr>
-                          <th scope="col" width="60">i</th>
-                          <th scope="col">0</th>
-                        </tr>
-                      </thead>
-                      <tbody class="table-group-divider">
-                        <tr>
-                          <th scope="row"><math>r<sub>i</sub></math></th>
-                          <td>Mark</td>
-                        </tr>
-                      </tbody>
-                </table>
+            <div id="given" class="col-12 mt-4">
+                <!-- given -->
+                <h5 class="text-warning">Given:</h5>
+                <div class="table-responsive">
+                    <table id="table0" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>r<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table id="table1" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>m<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-12">
-                Finding M
+            <div class="col-12 mt-5">
+                <!-- Finding M -->
+                <h5 class="text-warning">Finding value of M</h5>
+                <div class="text-center text-light">
+                    <math>M = m<sub>0</sub> * m<sub>1</sub> * ....... * m<sub>n</sub></math>
+                </div>
+                <div id="M_value" class="text-warning text-center"></div>
             </div>
-            <div class="col-12">
-                Finding Mi
+            <div class="col-12 mt-5">
+                <!-- Finding Mi -->
+                <h5 class="text-warning">
+                    Finding value of 
+                    <math>M<sub>i</sub></math>
+                </h5>
+                <div class="col-12 p-4 text-light text-center">
+                    <!-- formula -->
+                    <h6 class="text-warning">Solved as follow</h6>
+                    <math>
+                        M<sub>i</sub> = M / m<sub>i</sub>
+                    </math>
+                </div>
+                <div class="table-responsive">
+                    <table id="table2" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>M<sub>i</sub></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-12">
-                Finding Mi inverse
+            <div class="col-12 mt-5">
+                <!-- Finding Mi inverse-->
+                <h5 class="text-warning">Finding value of 
+                    <math class="text-warning">M<sub>i</sub><sup>-1</sup></math>
+                </h5>
+                <div class="col-12 p-4 text-light text-center">
+                    <!-- formula -->
+                    <h6 class="text-warning">Solved by using extended euclidean algorithm</h6>
+                    <math>
+                        M<sub>i</sub> M<sub>i</sub><sup>-1</sup> &#8801; 1 (mod mi)
+                    </math>
+                </div>
+                <div class="table-responsive">
+                    <table id="table3" class="table table-light table-bordered border-primary">
+                        <thead>
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">For i</th>
+                            </tr>
+                          </thead>
+                          <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row" style="min-width: 70px;">
+                                    <math>M<sub>i</sub><sup>-1</sup></math>
+                                </th>
+                            </tr>
+                          </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="col-12">
-                Finding X
+            <div class="col-12 mt-5">
+                <!-- Finding X -->
+                <div id="X_value" class="text-center">
+                    <h5 class="text-warning">
+                        
+                    </h5>
+                </div>
             </div>
         </div>
     </div>
     <br>
-    <br> -->
+    <br>
 
     <div class="container">
         <div class="row bg-dark h-100 py-4" >
